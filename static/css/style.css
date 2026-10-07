@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: #0b1120;
+    color: #e2e8f0;
+    min-height: 100vh;
+}
+
+/* Authentication Views */
+.auth-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-card {
+    background: #1e293b;
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 380px;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.hint {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.error-msg {
+    background: #7f1d1d;
+    color: #fca5a5;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+}
+
+.nav-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.dataset-tag {
+    background: #0284c7;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 12px;
+}
+
+.navbar a {
+    color: #ef4444;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+/* Two-Column Master App Layout */
+.container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 20px;
+    padding: 1.5rem;
+    align-items: start;
+}
+
+/* Cards */
+.card {
+    background: #1e293b;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    padding: 1.4rem;
+}
+
+/* Left Sidebar Controls */
+.panel h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    color: #f8fafc;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+select, input {
+    width: 100%;
+    padding: 0.65rem;
+    background: #0f172a;
+    border: 1px solid #475569;
+    color: #f8fafc;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    outline: none;
+}
+
+select:focus, input:focus {
+    border-color: #0284c7;
+}
+
+/* Live Metrics Badges */
+.metrics-summary {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #334155;
+}
+
+.metrics-summary h4 {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-bottom: 0.8rem;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.badge {
+    padding: 3px 8px;
+    background: #334155;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+.badge-success { background: #065f46; color: #a7f3d0; }
+.badge-accent { background: #92400e; color: #fde68a; }
+
+/* Export Buttons */
+.export-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #334155;
+}
+
+.btn-secondary {
+    background: #0f172a;
+    border: 1px solid #475569;
+    color: #e2e8f0;
+    padding: 0.65rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: #334155;
+    border-color: #64748b;
+}
+
+/* Right Content Area */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.charts-top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.chart-box h4, .table-box h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    color: #cbd5e1;
+}
+
+/* History Telemetry Table */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 0.6rem;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+.history-table th {
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 8px 12px;
+    border-bottom: 2px solid #334155;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.history-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #334155;
+    color: #cbd5e1;
+}
+
+.history-table tr:hover td {
+    background: rgba(15, 23, 42, 0.6);
+}
+
+/* ============================================================
+   CLEAN PRINT / PDF FLOW (NATURAL 2 PAGES)
+   ============================================================ */
+   /* Controlled height for Azimuth Angle chart */
+.sweep-canvas-wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px; /* Clean, compact proportional height */
+}
+
+.sweep-canvas-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+@media print {
+    @page {
+        size: landscape;
+        margin: 8mm 12mm;
+    }
+
+    html, body {
+        background-color: #0b1120 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color: #e2e8f0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .export-actions, .navbar a {
+        display: none !important;
+    }
+
+    .container {
+        padding: 0 !important;
+        gap: 15px !important;
+        grid-template-columns: 310px 1fr !important;
+    }
+
+    .card {
+        background-color: #1e293b !important;
+        border: 1px solid #334155 !important;
+        box-shadow: none !important;
+    }
+
+    /* Page break cleanly before the history table */
+    .table-box {
+        page-break-before: always !important;
+        break-before: page !important;
+        margin-top: 15px !important;
+    }
+}

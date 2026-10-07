@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Defense Radar Simulator - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="auth-body">
+    <div class="auth-card">
+        <h2>🛡️ DEFENSE STEALTH SIMULATOR</h2>
+        <p class="subtitle">Indigenous Stealth Coating Evaluation System</p>
+        {% if error %}
+            <div class="error-msg">{{ error }}</div>
+        {% endif %}
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label>Operator ID / Username</label>
+                <input type="text" name="username" value="admin" required autofocus>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" value="password123" required>
+            </div>
+            <button type="submit" class="btn">Authenticate Session</button>
+        </form>
+        <p class="hint">Default Review Access: <code>admin</code> / <code>password123</code></p>
+    </div>
+</body>
+</html>

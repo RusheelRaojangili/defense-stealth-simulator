@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Defense Stealth Coating Simulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-title">🛡️ DEFENSE STEALTH COATING EVALUATION SYSTEM</div>
+        <div class="nav-user">
+            Operator: <strong>{{ username }}</strong> | 
+            <span class="dataset-tag">Zenodo Real Dataset</span> | 
+            <a href="/logout">Logout</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- COMPLETE LEFT SIDEBAR -->
+        <aside class="card panel">
+            <h3>Configuration Controls</h3>
+            
+            <div class="form-group">
+                <label for="assetSelect">Defense Asset Platform:</label>
+                <select id="assetSelect" onchange="runSimulation()">
+                    {% for a in assets %}
+                        <option value="{{ a }}">{{ a }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="coatingSelect">Stealth Coating Material:</label>
+                <select id="coatingSelect" onchange="runSimulation()">
+                    {% for c in coatings %}
+                        <option value="{{ c }}">{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="angleSelect">Radar Incident Azimuth Angle (phi_deg):</label>
+                <select id="angleSelect" onchange="runSimulation()">
+                    {% for a in angles %}
+                        <option value="{{ a }}">{{ a }}° Azimuth</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="metrics-summary">
+                <h4>Electromagnetic Metrics</h4>
+                <div class="metric-row">
+                    <span>Bare Asset RCS:</span>
+                    <strong id="mBare" class="badge">-- dBsm</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Coated Asset RCS:</span>
+                    <strong id="mCoated" class="badge badge-success">-- dBsm</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Attenuation (ΔdB):</span>
+                    <strong id="mDelta" class="badge badge-accent">-- dB</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Reflected Power Absorbed:</span>
+                    <strong id="mAbs" class="badge badge-success">-- %</strong>
+                </div>
+                <div class="metric-row">
+                    <span>Physical Cross-Section (m²):</span>
+                    <strong id="mArea" class="badge">-- m²</strong>
+                </div>
+            </div>
+
+            <div class="export-actions">
+                <button class="btn btn-secondary" onclick="exportDataCSV()">📥 Export CSV Report</button>
+                <button class="btn btn-secondary" onclick="window.print()">🖨️ Print / Save PDF</button>
+            </div>
+        </aside>
+
+        <!-- RIGHT CONTENT AREA -->
+        <main class="content-area">
+            <!-- 1. Top row: 2 charts side by side -->
+            <div class="charts-top-row">
+                <div class="card chart-box">
+                    <h4>RCS Comparison (Before vs After Coating)</h4>
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="card chart-box">
+                    <h4>Detection Probability vs Radar Range (4th-Power Law)</h4>
+                    <canvas id="rangeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 2. Middle row: Azimuth angle sweep -->
+<div class="card chart-box">
+    <h4>Azimuth Angle Scattering Response (0° to 90° Sweep)</h4>
+    <div class="sweep-canvas-wrapper">
+        <canvas id="sweepChart"></canvas>
+    </div>
+</div>
+
+            <!-- 3. Bottom row: Simulation Run History Table -->
+            <div class="card table-box">
+                <h4>Recent Simulation Runs & Persistent Log</h4>
+                <div class="table-responsive">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Asset Platform</th>
+                                <th>RAM Coating</th>
+                                <th>Azimuth</th>
+                                <th>Bare RCS</th>
+                                <th>Coated RCS</th>
+                                <th>ΔdB</th>
+                                <th>Power Absorbed</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <tr>
+                                <td colspan="8" style="text-align: center; color: #94a3b8;">Awaiting initial simulation...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+</body>
+</html>
